@@ -81,8 +81,10 @@ class FrequencySummarizer:
 # command = ('python thai-sent_tokenize'+os.sep+'run.py')
 # subprocess.call(command)
 input_path = 'input.txt'
+text = ''
 with open(input_path,'r',encoding='utf-8')as input_file:
-    text = input_file.readline()
+    for row in input_file:
+        text += row.strip()
 freq = FrequencySummarizer()
 with open('summerize.txt','w',encoding='utf-8')as summerize_file:
     for s in freq.summarize(2):
