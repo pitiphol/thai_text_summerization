@@ -260,7 +260,7 @@ from pythainlp.corpus.thaiword import get_data
 lines2 =get_data()'''
 data_all=[]
 thaiword=create_custom_dict_trie(list(set(ccc+lines2+stopwords+conjunctions)))
-print("จำนวนประโยค : "+str(len(lines1)))
+# print("จำนวนประโยค : "+str(len(lines1)))
 for lines in lines1:
 	text=dict_word_tokenize(lines,thaiword)
 	#text=word_tokenize(lines,thai_tokenize)
@@ -306,7 +306,7 @@ classifier = nltk.NaiveBayesClassifier.train(train_set)
 print(t)'''
 if test:
 	t=nltk.classify.accuracy(classifier, test_set)
-	print(t)
+	# print(t)
 def segment_sentences(words):
 	start = 0
 	sents = []
@@ -343,4 +343,5 @@ with open(output_path,'w',encoding='utf-8')as output:
     for sent in thai_sents:
         output.write(sent+'\n')
     output.close()
+print('success sent_token')
 # print('sent : '+'/'.join([''.join(i) for i in thai_sents]))

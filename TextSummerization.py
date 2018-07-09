@@ -50,7 +50,7 @@ class FrequencySummarizer:
             del freq[w]
         return freq
 
-    def summarize(self, text, n):
+    def summarize(self, n):
         """
           Return a list of n sentences
           which represent the summary of text.
@@ -76,15 +76,13 @@ class FrequencySummarizer:
         """ return the first n sentences with highest ranking """
         return nlargest(n, ranking, key=ranking.get)
 
-os.system('python thai-sent_tokenize-master'+os.sep+'run.py')
+os.system('python thai-sent_tokenize'+os.sep+'run.py')
 input_path = 'input.txt'
 with open(input_path,'r',encoding='utf-8')as input:
     text = input.readline()
 freq = FrequencySummarizer()
-title, text = 'ทำไมต้องเต้นในเวลาที่ปวดปัสสาวะมาก?',text
-print('----------------------------------')
-print(title)
 with open('summerize.txt','w',encoding='utf-8')as summerize_file:
-    for s in freq.summarize(text, 2):
-        summerize_file.write('*'+s)
+    for s in freq.summarize(2):
+        summerize_file.write('*'+s+'\n')
 summerize_file.close()
+print('success')
